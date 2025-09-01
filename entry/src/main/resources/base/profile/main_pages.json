@@ -1,0 +1,10 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/others/Images",
+    "pages/video/Videos",
+    "pages/others/Docs",
+    "pages/others/Notes",
+    "pages/video/VideoPlayerPage"
+  ]
+}

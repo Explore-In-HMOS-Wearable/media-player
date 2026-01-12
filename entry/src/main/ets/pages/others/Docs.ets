@@ -1,8 +1,19 @@
-@Entry
+export const DOCS_PAGE = 'DocsPage';
+
+@Builder
+export function DocsPageBuilder() {
+  Docs();
+}
+
+
 @Component
 struct Docs {
   build() {
-    Flex() {
+    NavDestination() {
+      Flex() {
+      }
     }
+    .hideTitleBar(true)
+    .mode(NavDestinationMode.STANDARD)
   }
 }

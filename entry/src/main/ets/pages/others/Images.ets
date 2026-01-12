@@ -1,11 +1,22 @@
 import { PlayerList } from '../../view/VideoPlayerList';
 
-@Entry
+export const IMAGES_PAGE = 'ImagesPage';
+
+@Builder
+export function ImagesPageBuilder() {
+  Images();
+}
+
+
 @Component
 struct Images {
   build() {
-    Flex() {
-      PlayerList()
+    NavDestination() {
+      Flex() {
+        PlayerList()
+      }
     }
+    .hideTitleBar(true)
+    .mode(NavDestinationMode.STANDARD)
   }
 }

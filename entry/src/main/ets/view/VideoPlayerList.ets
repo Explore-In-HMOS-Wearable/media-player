@@ -1,4 +1,4 @@
-import { VideoItem, VIDEOS } from "../viewmodel/VideosViewmodel";
+import { VideoItem, VIDEOS } from '../viewmodel/VideosViewmodel';
 
 @Builder
 export function PlayerList(onClick?: (item: VideoItem) => void, isNameVisible: boolean = false) {
@@ -9,7 +9,7 @@ export function PlayerList(onClick?: (item: VideoItem) => void, isNameVisible: b
         ListItem() {
           Item({
             imageSrc: item.image,
-            name: isNameVisible == true ? item.videoName : $r('app.string.empty'),
+            name: isNameVisible === true ? item.videoName : $r('app.string.empty')
           })
             .onClick(() => {
               if (onClick != null) {
@@ -17,7 +17,7 @@ export function PlayerList(onClick?: (item: VideoItem) => void, isNameVisible: b
               }
             })
         }
-      }, (item: VideoItem) => JSON.stringify(item))
+      }, (item: VideoItem, index : number) => item.id.toString())
     }.width('100%').height('100%')
     .alignListItem(ListItemAlign.Center)
     .align(Alignment.Center)

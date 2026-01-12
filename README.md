@@ -7,10 +7,13 @@ Media Player App is a demo project for showcasing locally stored videos and play
 # Preview
 
 <div>
-   <img src="./images/Animation1.gif" width="24%"/>
-   <img src="./images/output1.png" width="24%"/>
-   <img src="./images/output2.png" width="24%"/>
-   <img src="./images/output3.png" width="24%"/>
+<img src="./screenshots/Animation1.gif" width="24%"/>
+
+<img src="./screenshots/output1.png" width="24%"/>
+
+<img src="./screenshots/output2.png" width="24%"/>
+
+<img src="./screenshots/output3.png" width="24%"/>
 </div>
 
 # Use Cases

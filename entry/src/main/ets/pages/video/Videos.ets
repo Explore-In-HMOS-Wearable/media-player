@@ -1,17 +1,32 @@
-import { VideoService } from "../../service/VideoService";
-import { PlayerList } from "../../view/VideoPlayerList";
-import router from "@ohos.router";
+import { VideoService } from '../../service/VideoService';
+import { PlayerList } from '../../view/VideoPlayerList';
+import { VIDEO_PLAYER_PAGE } from './VideoPlayerPage';
 
-@Entry
+export const VIDEOS_PAGE = 'VideosPage';
+
+@Builder
+export function VideosPageBuilder() {
+  Videos();
+}
+
+
 @Component
 struct Videos {
+  @Consume('NavPathStack') private pageStack: NavPathStack;
+
   build() {
-    Flex() {
-      PlayerList((item) => {
-        VideoService.getInstance().source = item.videoLink
-        VideoService.getInstance().name = item.videoName;
-        router.pushUrl({ url: 'pages/video/VideoPlayerPage' })
-      }, true)
+    NavDestination() {
+      Flex() {
+        PlayerList((item) => {
+          VideoService.getInstance().source = item.videoLink
+          VideoService.getInstance().name = item.videoName;
+          this.pageStack.pushPath({
+            name: VIDEO_PLAYER_PAGE
+          })
+        }, true)
+      }
     }
+    .hideTitleBar(true)
+    .mode(NavDestinationMode.STANDARD)
   }
 }

@@ -1,6 +1,10 @@
 import { TabsButton } from '../view/TabsButton';
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { FavoritesService } from '../service/FavoritesService';
+import { PlaybackResumeService } from '../service/PlaybackResumeService';
+import { RecentlyPlayedService } from '../service/RecentlyPlayedService';
+import { NoteService } from '../service/NoteService';
 
 const permissions: Array<Permissions> = ['ohos.permission.INTERNET'];
 
@@ -23,9 +27,13 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 @Entry
 @Component
 struct Index {
-  aboutToAppear() {
+  async aboutToAppear(): Promise<void> {
     const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     reqPermissionsFromUser(permissions, context);
+    await FavoritesService.getInstance().init(context);
+    await PlaybackResumeService.getInstance().init(context);
+    await RecentlyPlayedService.getInstance().init(context);
+    await NoteService.getInstance().init(context);
   }
 
   build() {

@@ -1,53 +1,48 @@
+import { ArcList, ArcListItem, LengthMetrics } from '@kit.ArkUI';
 import { VideoItem, VIDEOS } from '../viewmodel/VideosViewmodel';
 
 @Builder
 export function PlayerList(onClick?: (item: VideoItem) => void, isNameVisible: boolean = false) {
-
-  Flex({ alignItems: ItemAlign.Center }) {
-    List({space:0}) {
+  Stack() {
+    ArcList({ initialIndex: 0 }) {
       ForEach(VIDEOS, (item: VideoItem) => {
-        ListItem() {
-          Item({
-            imageSrc: item.image,
-            name: isNameVisible === true ? item.videoName : $r('app.string.empty')
-          })
-            .onClick(() => {
-              if (onClick != null) {
-                onClick(item);
+        ArcListItem() {
+          Button({ type: ButtonType.Capsule }) {
+            Row() {
+              Image(item.image)
+                .width(24)
+                .height(18)
+                .borderRadius(3)
+                .objectFit(ImageFit.Cover)
+                .margin({ right: 5 })
+              if (isNameVisible) {
+                Text(item.videoName)
+                  .fontSize(8)
+                  .fontColor('#d0d0d4')
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .constraintSize({ maxWidth: 70 })
               }
-            })
-        }
-      }, (item: VideoItem, index : number) => item.id.toString())
-    }.width('100%').height('100%')
-    .alignListItem(ListItemAlign.Center)
-    .align(Alignment.Center)
-    .listDirection(Axis.Vertical)
-    .scrollBar(BarState.Off)
-
+            }
+          }
+          .backgroundColor('#252529')
+          .width(125)
+          .height(32)
+          .onClick(() => {
+            if (onClick != null) {
+              onClick(item);
+            }
+          })
+        }.align(Alignment.Center)
+      }, (item: VideoItem, index: number) => item.id.toString())
+    }
+    .height('100%')
+    .width('100%')
+    .space(LengthMetrics.px(3))
+    .focusable(true)
+    .focusOnTouch(true)
+    .defaultFocus(true)
   }
   .height('100%')
   .width('100%')
-  .alignSelf(ItemAlign.Center)
 }
-
-@Component
-struct Item {
-  imageSrc: Resource = $r('app.string.empty');
-  name: ResourceStr = '';
-
-  build() {
-    Column() {
-      Image(this.imageSrc)
-        .width('75%')
-        .height('32%')
-        .margin({ bottom: 2 })
-        .borderRadius(10)
-      Text(this.name)
-    }.width('70%')
-    .margin({top:20})
-    .padding({top:5})
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-

@@ -1,5 +1,3 @@
-> **Note:** To access all shared projects, get information about environment setup, and view other guides, please visit [Explore-In-HMOS-Wearable Index](https://github.com/Explore-In-HMOS-Wearable/hmos-index).
-
 # Media Player App
 
 Media Player App is a demo project for showcasing locally stored videos and playing them upon user interaction.
@@ -7,13 +5,10 @@ Media Player App is a demo project for showcasing locally stored videos and play
 # Preview
 
 <div>
-<img src="./screenshots/Animation1.gif" width="24%"/>
-
-<img src="./screenshots/output1.png" width="24%"/>
-
-<img src="./screenshots/output2.png" width="24%"/>
-
-<img src="./screenshots/output3.png" width="24%"/>
+   <img src="./screenshots/Animation1.gif" width="24%"/>
+   <img src="./screenshots/output1.png" width="24%"/>
+   <img src="./screenshots/output2.png" width="24%"/>
+   <img src="./screenshots/output3.png" width="24%"/>
 </div>
 
 # Use Cases
